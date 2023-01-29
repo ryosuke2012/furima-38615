@@ -9,11 +9,11 @@ class Item < ApplicationRecord
   belongs_to :region
   belongs_to :delivery_time
 
-  validates :name, :description, :price, presence: true
+  validates :name, :description, :price, :image, presence: true
 
   with_options numericality: { other_than: 1, message: "can't be blank" } do
     validates :category_id
-    validates :conditon_id
+    validates :condition_id
     validates :shipping_fee_id
     validates :region_id
     validates :delivery_time_id
