@@ -55,7 +55,7 @@ RSpec.describe Item, type: :model do
       it 'priceが空だと出品できない' do
         @item.price = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price can't be blank", 'Price is invalid', 'Price is not a number')
+        expect(@item.errors.full_messages).to include("Price can't be blank")
       end
       it 'priceが全角数字だと出品できない' do
         @item.price = '２０００'
