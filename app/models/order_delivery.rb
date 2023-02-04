@@ -10,7 +10,8 @@ class OrderDelivery
     validates :user_id
     validates :item_id
   end
-  validates :region_id, numericality: {other_than: 0, message: "can't be blank"}
+  validates :region_id, numericality: {other_than: 1, message: "can't be blank"}
+
 
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
