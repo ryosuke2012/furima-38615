@@ -26,7 +26,7 @@ RSpec.describe OrderDelivery, type: :model do
       it 'postcodeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
         @order_delivery.postcode = '1234567'
         @order_delivery.valid?
-        expect(@order_delivery.errors.full_messages).to include("Postcode is invalid. Include hyphen(-)")
+        expect(@order_delivery.errors.full_messages).to include('Postcode is invalid. Include hyphen(-)')
       end
       it 'region_idを選択していないと保存できないこと' do
         @order_delivery.region_id = nil
@@ -51,7 +51,7 @@ RSpec.describe OrderDelivery, type: :model do
       it 'phone_numberが10桁以上11桁以内の半角数値を含んだ形式でないと保存できないこと' do
         @order_delivery.phone_number = '123456789'
         @order_delivery.valid?
-        expect(@order_delivery.errors.full_messages).to include("Phone number is invalid")
+        expect(@order_delivery.errors.full_messages).to include('Phone number is invalid')
       end
       it 'userが紐付いていないと保存できないこと' do
         @order_delivery.user_id = nil
@@ -63,7 +63,7 @@ RSpec.describe OrderDelivery, type: :model do
         @order_delivery.valid?
         expect(@order_delivery.errors.full_messages).to include("Item can't be blank")
       end
-      it "tokenが空では登録できないこと" do
+      it 'tokenが空では登録できないこと' do
         @order_delivery.token = nil
         @order_delivery.valid?
         expect(@order_delivery.errors.full_messages).to include("Token can't be blank")

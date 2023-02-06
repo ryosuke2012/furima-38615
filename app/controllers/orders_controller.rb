@@ -5,9 +5,9 @@ class OrdersController < ApplicationController
 
   def index
     @order_delivery = OrderDelivery.new
-    if @item.user == current_user
-      redirect_to root_path
-    end
+    return unless @item.user == current_user
+
+    redirect_to root_path
   end
 
   def create
@@ -18,22 +18,24 @@ class OrdersController < ApplicationController
       redirect_to root_path
     else
       render :index
-    end      
+    end
   end
 
   private
 
   def order_params
-    params.require(:order_delivery).permit(:postcode, :region_id, :municipality, :house_number, :building_name, :phone_number).merge(user_id: current_user.id, item_id: @item.id, token: params[:token])
+    params.require(:order_delivery).permit(:postcode, :region_id, :municipality, :house_number, :building_name, :phone_number).merge(
+      user_id: current_user.id, item_id: @item.id, token: params[:token]
+    )
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
-      Payjp::Charge.create(
-        amount: @item.price,
-        card: order_params[:token],
-        currency: 'jpy'
-      )
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+    Payjp::Charge.create(
+      amount: @item.price,
+      card: order_params[:token],
+      currency: 'jpy'
+    )
   end
 
   def set_order
@@ -41,8 +43,8 @@ class OrdersController < ApplicationController
   end
 
   def move_to_index
-    unless current_user && @item.order == nil
-      redirect_to root_path
-    end
+    return if current_user && @item.order.nil?
+
+    redirect_to root_path
   end
 end
