@@ -1,13 +1,11 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index]
   before_action :set_order
-  before_action :move_to_index
+  before_action :move_to_index, only: :index
+  before_action :move_to_index2, only: :index
 
   def index
     @order_delivery = OrderDelivery.new
-    return unless @item.user == current_user
-
-    redirect_to root_path
   end
 
   def create
@@ -43,7 +41,13 @@ class OrdersController < ApplicationController
   end
 
   def move_to_index
-    return if current_user && @item.order.nil?
+    return unless @item.user == current_user
+
+    redirect_to root_path
+  end
+
+  def move_to_index2
+    return unless @item.order.present?
 
     redirect_to root_path
   end
