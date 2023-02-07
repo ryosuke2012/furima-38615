@@ -3,8 +3,9 @@ require 'rails_helper'
 RSpec.describe OrderDelivery, type: :model do
   describe '発送先情報の保存' do
     before do
-      user = FactoryBot.create(:user)
-      @order_delivery = FactoryBot.build(:order_delivery, user_id: user.id)
+      @user = FactoryBot.create(:user)
+      @item = FactoryBot.create(:item)
+      @order_delivery = FactoryBot.build(:order_delivery, user_id: @user.id, item_id: @item.id)
     end
 
     context '内容に問題ない場合' do
@@ -48,8 +49,18 @@ RSpec.describe OrderDelivery, type: :model do
         @order_delivery.valid?
         expect(@order_delivery.errors.full_messages).to include("Phone number can't be blank")
       end
-      it 'phone_numberが10桁以上11桁以内の半角数値を含んだ形式でないと保存できないこと' do
+      it 'phone_numberが9桁以下では購入できない' do
         @order_delivery.phone_number = '123456789'
+        @order_delivery.valid?
+        expect(@order_delivery.errors.full_messages).to include('Phone number is invalid')
+      end
+      it 'phone_numberが12桁以上では購入できない' do
+        @order_delivery.phone_number = '1234567890123'
+        @order_delivery.valid?
+        expect(@order_delivery.errors.full_messages).to include('Phone number is invalid')
+      end
+      it 'phone_numberに半角数字以外が含まれている場合は購入できない' do
+        @order_delivery.phone_number = '12345１２３４５'
         @order_delivery.valid?
         expect(@order_delivery.errors.full_messages).to include('Phone number is invalid')
       end
