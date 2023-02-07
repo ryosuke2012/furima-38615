@@ -30,7 +30,7 @@ RSpec.describe OrderDelivery, type: :model do
         expect(@order_delivery.errors.full_messages).to include('Postcode is invalid. Include hyphen(-)')
       end
       it 'region_idを選択していないと保存できないこと' do
-        @order_delivery.region_id = nil
+        @order_delivery.region_id = 1
         @order_delivery.valid?
         expect(@order_delivery.errors.full_messages).to include("Region can't be blank")
       end
