@@ -49,11 +49,6 @@ document.addEventListener('DOMContentLoaded', function(){
     // data-index（何番目を操作しているか）を取得
     const dataIndex = e.target.getAttribute('data-index');
 
-    // 古いプレビューが存在する場合は削除
-    const alreadyPreview = document.querySelector('.preview');
-    if (alreadyPreview) {
-      alreadyPreview.remove();
-    };
     const file = e.target.files[0];
     const blob = window.URL.createObjectURL(file);
 
