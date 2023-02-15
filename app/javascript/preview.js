@@ -52,6 +52,16 @@ document.addEventListener('DOMContentLoaded', function(){
     const file = e.target.files[0];
     const blob = window.URL.createObjectURL(file);
 
+    // data-indexを使用して、既にプレビューが表示されているかを確認する
+    const alreadyPreview = document.querySelector(`.preview[data-index="${dataIndex}"]`);
+
+    if (alreadyPreview) {
+      // クリックしたfile_fieldのdata-indexと、同じ番号のプレビュー画像が既に表示されている場合は、画像の差し替えのみを行う
+      const alreadyPreviewImage = alreadyPreview.querySelector("img");
+      alreadyPreviewImage.setAttribute("src", blob);
+      return null;
+    };
+
     buildPreviewImage(dataIndex, blob);
     buildNewFileField();
   };
