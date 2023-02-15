@@ -35,21 +35,11 @@
 
 .other-images {
   display: flex;
+  justify-content: center;
 }
 
 .other-image {
   margin-right: 10px;
-}
-
-.image-delete-button {
-  text-align: center;
-  border: solid 1px;
-  cursor: pointer;
-}
-
-.main-image {
-  height: 200px;
-  width: 200px;
 }
 
 .item-price-box {
