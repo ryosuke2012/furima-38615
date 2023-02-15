@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
   belongs_to :user
   has_one :order
-  has_one_attached :image
+  has_many_attached :images
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
@@ -10,7 +10,7 @@ class Item < ApplicationRecord
   belongs_to :region
   belongs_to :delivery_time
 
-  validates :name, :description, :image, presence: true
+  validates :name, :description, :images, presence: true
 
   with_options presence: true, format: { with: /\A[0-9]+\z/ } do
     validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 },
