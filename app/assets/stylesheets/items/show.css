@@ -33,6 +33,15 @@
   object-fit: contain;
 }
 
+.other-images {
+  display: flex;
+  justify-content: center;
+}
+
+.other-image {
+  margin-right: 10px;
+}
+
 .item-price-box {
   margin: 25px 0px;
   display: flex;
