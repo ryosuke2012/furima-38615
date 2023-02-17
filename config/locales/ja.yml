@@ -24,7 +24,7 @@ ja:
       order_delivery:
         token: クレジットカード情報
         postcode: 郵便番号
-        municipality: 市町村
+        municipality: 市区町村
         region_id: 都道府県
         house_number: 番地
         phone_number: 電話番号
