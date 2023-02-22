@@ -19,6 +19,24 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render :new_personality
     end
 
+    def create_address
+      @user = User.new(session["devise.regist_data"]["user"])
+      @personality = Personality.new(personality_params)
+       unless @personality.valid?
+         render :new_personality and return
+       end
+      @user.build_personality(@personality.attributes)
+      @user.save
+      session["devise.regist_data"]["user"].clear
+      sign_in(:user, @user)
+    end
+   
+    private
+   
+    def personality_params
+      params.require(:personality).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :date_of_birth)
+    end
+
   # GET /resource/sign_up
   # def new
   #   super
