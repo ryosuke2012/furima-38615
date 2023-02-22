@@ -69,6 +69,7 @@
 
 .form-info-header {
   font-weight: bold;
+  margin-top: 40px;
 }
 
 .form-info-text {
@@ -139,7 +140,7 @@
 
 .register-btn {
   width: 50%;
-  margin: 0 auto;
+  margin: 40px auto 0;
 }
 
 .register-red-btn {
