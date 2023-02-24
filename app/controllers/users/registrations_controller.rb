@@ -19,7 +19,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render :new_personality
     end
 
-    def create_address
+    def create_personality
       @user = User.new(session["devise.regist_data"]["user"])
       @personality = Personality.new(personality_params)
        unless @personality.valid?

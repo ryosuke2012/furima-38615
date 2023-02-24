@@ -159,3 +159,24 @@
   text-align: right;
   cursor: pointer;
 }
+
+/* create_personality */
+.finish-registration {
+  height: 300px;
+  text-align: center;
+}
+
+.finish {
+  margin-top: 40px;
+  font-size: 30px;
+}
+
+.root-btn {
+  width: 100%;
+  background: #3ccace;
+  border: 1px solid #3ccace;
+  color: #fff;
+  line-height: 200px;
+  font-size: 20px;
+  cursor: pointer;
+}
