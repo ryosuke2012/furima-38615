@@ -69,6 +69,7 @@
 
 .form-info-header {
   font-weight: bold;
+  margin-top: 40px;
 }
 
 .form-info-text {
@@ -139,7 +140,7 @@
 
 .register-btn {
   width: 50%;
-  margin: 0 auto;
+  margin: 40px auto 0;
 }
 
 .register-red-btn {
@@ -156,5 +157,26 @@
   margin: 30px 180px 0 0;
   color: #0099e8;
   text-align: right;
+  cursor: pointer;
+}
+
+/* create_personality */
+.finish-registration {
+  height: 300px;
+  text-align: center;
+}
+
+.finish {
+  margin-top: 40px;
+  font-size: 30px;
+}
+
+.root-btn {
+  width: 100%;
+  background: #3ccace;
+  border: 1px solid #3ccace;
+  color: #fff;
+  line-height: 200px;
+  font-size: 20px;
   cursor: pointer;
 }
