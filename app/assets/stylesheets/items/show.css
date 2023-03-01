@@ -214,3 +214,16 @@
   font-weight: bold;
   font-size: 23px;
 }
+
+.comment{
+  display: flex;
+}
+
+.comment p{
+   margin: 0;
+}
+
+.user-info{
+  color: gray;
+  font-weight: bold;
+}
