@@ -1,15 +1,19 @@
 import consumer from "./consumer"
 
-consumer.subscriptions.create("CommentChannel", {
-  connected() {
-    // Called when the subscription is ready for use on the server
-  },
+if(location.pathname.match(/\/items\/\d/)){
+  console.log("読み込み完了")
 
-  disconnected() {
-    // Called when the subscription has been terminated by the server
-  },
+  consumer.subscriptions.create("CommentChannel", {
+    connected() {
+      // Called when the subscription is ready for use on the server
+    },
 
-  received(data) {
-    // Called when there's incoming data on the websocket for this channel
-  }
-});
+    disconnected() {
+      // Called when the subscription has been terminated by the server
+    },
+
+    received(data) {
+      // Called when there's incoming data on the websocket for this channel
+    }
+  });
+}
