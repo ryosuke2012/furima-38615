@@ -2,7 +2,7 @@
 
 <%= form_with model: @personality, class: 'registration-main', local: true do |f| %>
   <div class='form-wrap'>
-    <%= render 'shared/error_messages', resource: @personality %>
+    <%= render 'shared/error_messages', model: f.object %>
 
     <div class="form-group">
       <p class='form-info-header'>
