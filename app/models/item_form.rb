@@ -25,4 +25,8 @@ class ItemForm
     validates :region_id
     validates :delivery_time_id
   end
+
+  def save
+    Item.create(name: name, description: description, images: images, price: price, category_id: category_id, condition_id: condition_id, shipping_fee_id: shipping_fee_id, region_id: region_id, delivery_time_id: delivery_time_id)
+  end
 end
