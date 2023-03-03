@@ -1,13 +1,6 @@
 class ItemForm
   include ActiveModel::Model
 
-  extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :category
-  belongs_to :condition
-  belongs_to :shipping_fee
-  belongs_to :region
-  belongs_to :delivery_time
-
   attr_accessor :name, :description, :images, :price, :category_id, :condition_id, :shipping_fee_id, :region_id, :delivery_time_id, :user_id
 
   validates :name, :description, :images, presence: true
@@ -27,6 +20,7 @@ class ItemForm
   end
 
   def save
-    Item.create(name: name, description: description, price: price, category_id: category_id, condition_id: condition_id, shipping_fee_id: shipping_fee_id, region_id: region_id, delivery_time_id: delivery_time_id user_id: user_id, images: images)
+    Item.create(name: name, description: description, category_id: category_id, condition_id: condition_id, shipping_fee_id: shipping_fee_id, region_id: region_id,
+      delivery_time_id: delivery_time_id, price: price, user_id: user_id, images: images)
   end
 end
