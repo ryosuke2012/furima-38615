@@ -8,7 +8,7 @@ class ItemForm
   belongs_to :region
   belongs_to :delivery_time
 
-  attr_accessor :name, :description, :images, :price, :category_id, :condition_id, :shipping_fee_id, :region_id, :delivery_time_id
+  attr_accessor :name, :description, :images, :price, :category_id, :condition_id, :shipping_fee_id, :region_id, :delivery_time_id, :user_id
 
   validates :name, :description, :images, presence: true
   validates :images, length: { minimum: 1, maximum: 5, message: "は1枚以上5枚以下にしてください" }
@@ -27,6 +27,6 @@ class ItemForm
   end
 
   def save
-    Item.create(name: name, description: description, images: images, price: price, category_id: category_id, condition_id: condition_id, shipping_fee_id: shipping_fee_id, region_id: region_id, delivery_time_id: delivery_time_id)
+    Item.create(name: name, description: description, price: price, category_id: category_id, condition_id: condition_id, shipping_fee_id: shipping_fee_id, region_id: region_id, delivery_time_id: delivery_time_id user_id: user_id, images: images)
   end
 end
