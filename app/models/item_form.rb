@@ -23,4 +23,8 @@ class ItemForm
     Item.create(name: name, description: description, category_id: category_id, condition_id: condition_id, shipping_fee_id: shipping_fee_id, region_id: region_id,
       delivery_time_id: delivery_time_id, price: price, user_id: user_id, images: images)
   end
+
+  def update(params, item)
+    item.update(params)
+  end
 end
