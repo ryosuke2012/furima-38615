@@ -28,6 +28,11 @@ class ItemForm
   end
 
   def update(params, item)
+    item.item_tag_relations.destroy_all
+    tag_name = params.delete(:tag_name)
+    tag = Tag.where(tag_name: tag_name).first_or_initialize if tag_name.present?
+    tag.save if tag_name.present?
     item.update(params)
+    ItemTagRelation.create(item_id: item.id, tag_id: tag.id) if tag_name.present?
   end
 end
