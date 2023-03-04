@@ -32,7 +32,9 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if @item.update(item_params)
+    @item_form = ItemForm.new(item_form_params)
+    if @item_form.valid?
+      @item_form.update(item_form_params, @item)
       redirect_to item_path
     else
       render :edit
