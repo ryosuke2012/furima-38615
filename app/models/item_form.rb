@@ -20,8 +20,11 @@ class ItemForm
   end
 
   def save
-    Item.create(name: name, description: description, category_id: category_id, condition_id: condition_id, shipping_fee_id: shipping_fee_id, region_id: region_id,
+    item = Item.create(name: name, description: description, category_id: category_id, condition_id: condition_id, shipping_fee_id: shipping_fee_id, region_id: region_id,
       delivery_time_id: delivery_time_id, price: price, user_id: user_id, images: images)
+    tag = Tag.where(tag_name: tag_name).first_or_initialize
+    tag.save
+    ItemTagRelation.create(item_id: item.id, tag_id: tag.id)
   end
 
   def update(params, item)
