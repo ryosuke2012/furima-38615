@@ -1,7 +1,7 @@
 class ItemForm
   include ActiveModel::Model
 
-  attr_accessor :name, :description, :images, :price, :category_id, :condition_id, :shipping_fee_id, :region_id, :delivery_time_id, :user_id, :id, :created_at, :updated_at
+  attr_accessor :name, :description, :images, :price, :category_id, :condition_id, :shipping_fee_id, :region_id, :delivery_time_id, :user_id, :id, :created_at, :updated_at, :tag_name
 
   validates :name, :description, :images, presence: true
   validates :images, length: { minimum: 1, maximum: 5, message: "は1枚以上5枚以下にしてください" }
