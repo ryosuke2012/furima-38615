@@ -27,6 +27,8 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    item_attributes = @item.attributes
+    @item_form = ItemForm.new(item_attributes)
   end
 
   def update
