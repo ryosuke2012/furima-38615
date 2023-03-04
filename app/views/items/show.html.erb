@@ -71,7 +71,7 @@
         </tr>
         <tr>
           <th class="detail-item">タグ</th>
-          <td class="detail-value"><%= @item.tags.first.tag_name if @item.tags.first.present? %></td>
+          <td class="detail-value"><%= @item.tags.first&.tag_name %></td>
         </tr>
       </tbody>
     </table>
