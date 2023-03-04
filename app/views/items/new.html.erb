@@ -5,7 +5,7 @@
   </header>
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
-    <%= form_with model: @item, id: "new_post", local: true do |f| %>
+    <%= form_with model: @item_form, url: items_path, id: "new_post", local: true do |f| %>
 
     <%= render 'shared/error_messages', model: f.object %>
 
@@ -20,7 +20,7 @@
           クリックしてファイルをアップロード
         </p>
         <div id="previews"></div>
-        <%= f.file_field :images, id:"item-images", name: 'item[images][]', data: {index: 0} %>
+        <%= f.file_field :images, id:"item-images", name: 'item_form[images][]', data: {index: 0} %>
       </div>
     </div>
     <%# /商品画像 %>
@@ -38,6 +38,10 @@
         </div>
         <%= f.text_area :description, class:"items-text", id:"item-info", placeholder:"商品の説明（必須 1,000文字まで）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" ,rows:"7" ,maxlength:"1000" %>
       </div>
+      <div class="weight-bold-text">
+        タグ
+      </div>
+      <%= f.text_area :tag_name, class:"items-text", id:"item-name", placeholder:"タグ名（40文字まで)", maxlength:"40" %>
     </div>
     <%# /商品名と商品説明 %>
 
