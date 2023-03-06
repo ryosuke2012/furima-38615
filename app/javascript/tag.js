@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const XHR = new XMLHttpRequest();
         XHR.open("GET", `/items/search/?keyword=${keyword}`, true);
         XHR.responseType = "json";
+        XHR.send();
       });
     };
   });
