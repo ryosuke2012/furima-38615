@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const inputElement = document.getElementById("item-tag");
       inputElement.addEventListener("input", () => {
         const keyword = document.getElementById("item-tag").value;
+        console.log(keyword);
       });
     };
   });
