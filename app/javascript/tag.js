@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
         XHR.responseType = "json";
         XHR.send();
         XHR.onload = () => {
-          console.log("非同期通信成功");
+          const tagName = XHR.response.keyword;
         };
       });
     };
