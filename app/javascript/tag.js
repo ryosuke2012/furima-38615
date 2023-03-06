@@ -1,17 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
   const tagNameInput = document.getElementById("item-tag");
-    if (tagNameInput){
-      const inputElement = document.getElementById("item-tag");
-      inputElement.addEventListener("input", () => {
-        const keyword = document.getElementById("item-tag").value;
-        const XHR = new XMLHttpRequest();
-        XHR.open("GET", `/items/search/?keyword=${keyword}`, true);
-        XHR.responseType = "json";
-        XHR.send();
-        XHR.onload = () => {
+  if (tagNameInput){
+    const inputElement = document.getElementById("item-tag");
+    inputElement.addEventListener("input", () => {
+      const keyword = document.getElementById("item-tag").value;
+      const XHR = new XMLHttpRequest();
+      XHR.open("GET", `/items/search/?keyword=${keyword}`, true);
+      XHR.responseType = "json";
+      XHR.send();
+      XHR.onload = () => {
+        const searchResult = document.getElementById("search-result");
+        searchResult.innerHTML = "";
+        if (XHR.response) {
           const tagName = XHR.response.keyword;
-          const searchResult = document.getElementById("search-result");
-          searchResult.innerHTML = "";
           tagName.forEach((tag) => {
             const childElement = document.createElement("div");
             childElement.setAttribute("class", "child");
@@ -25,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
           });
         };
-      });
-    };
-  });
+      };
+    });
+  };
+});
