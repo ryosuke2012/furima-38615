@@ -17,6 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
             childElement.setAttribute("id", tag.id);
             childElement.innerHTML = tag.tag_name;
             searchResult.appendChild(childElement);
+            const clickElement = document.getElementById(tag.id);
+            clickElement.addEventListener("click", () => {
+              document.getElementById("item-tag").value = clickElement.textContent;
+              clickElement.remove();
+            });
           });
         };
       });
