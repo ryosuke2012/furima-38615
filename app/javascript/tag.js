@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   const tagNameInput = document.getElementById("item-tag");
     if (tagNameInput){
-      console.log("読み込み完了");
+      const inputElement = document.getElementById("item-tag");
+      inputElement.addEventListener("input", () => {
+        const keyword = document.getElementById("item-tag").value;
+      });
     };
   });
