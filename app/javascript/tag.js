@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const keyword = document.getElementById("item-tag").value;
         const XHR = new XMLHttpRequest();
         XHR.open("GET", `/items/search/?keyword=${keyword}`, true);
+        XHR.responseType = "json";
       });
     };
   });
