@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
       inputElement.addEventListener("input", () => {
         const keyword = document.getElementById("item-tag").value;
         const XHR = new XMLHttpRequest();
+        XHR.open("GET", `/items/search/?keyword=${keyword}`, true);
       });
     };
   });
