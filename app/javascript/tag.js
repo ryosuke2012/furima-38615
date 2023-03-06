@@ -8,6 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
         XHR.open("GET", `/items/search/?keyword=${keyword}`, true);
         XHR.responseType = "json";
         XHR.send();
+        XHR.onload = () => {
+          console.log("非同期通信成功");
+        };
       });
     };
   });
