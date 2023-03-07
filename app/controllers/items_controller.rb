@@ -54,6 +54,11 @@ class ItemsController < ApplicationController
     render json:{ keyword: tag }
   end
 
+  def serach2
+    @q = Item.ransack(params[:q])
+    @items = @q.result
+  end
+
   private
 
   def item_form_params
