@@ -1,7 +1,9 @@
 <%= render "shared/header" %>
-<div class='item-contents'>
-  <ul class='item-lists'>
-
+<div class='item-contents' id="detailed-search-result-wrapper">
+  <%= search_form_for @q, url: search2_items_path, html: {id: "detailed-search-form"} do |f| %>
+    <%= f.submit '検索' %>
+  <% end %>
+  <ul class='item-lists' id="detailed-search-result">
     <% @items.each do |item| %>
       <li class='list'>
         <%= link_to item_path(item.id) do %>
