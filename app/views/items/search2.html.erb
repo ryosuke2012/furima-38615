@@ -4,7 +4,7 @@
     <div class="search-field">
       <%= f.label :name, '商品名' %>
       <br>
-      <%= f.text_field :name, placeholder: '商品名' %>
+      <%= f.text_field :name, placeholder: '商品名', value: params[:q]&.dig(:name) %>
     </div>
     <div class="search-field">
       <%= f.label :user_nickname_cont, '出品者名' %>
